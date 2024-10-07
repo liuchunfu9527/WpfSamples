@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Sample1.UserControls.Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sample1.UserControls"
+             mc:Ignorable="d" 
+             Name="Card_">
+    <UserControl.Resources>
+        <Style x:Key="CardTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsChecked, ElementName=PART_ToggleButton}" Value="True">
+                    <Setter Property="Text" Value="On"/>
+                    <Setter Property="Foreground" Value="#2C59F5"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsChecked, ElementName=PART_ToggleButton}" Value="False">
+                    <Setter Property="Text" Value="Off"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CardToggleButtonStyle"  TargetType="ToggleButton">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="IsChecked" Value="{Binding IsChecked,ElementName=Card_}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
+                            Background="{TemplateBinding Background}" CornerRadius="10">
+                            <Ellipse x:Name="PART_Index" Width="18" Height="18" HorizontalAlignment="Left" 
+                                 Fill="#FFFFFF" StrokeThickness="1">
+                            </Ellipse>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked,ElementName=PART_ToggleButton}" Value="True">
+                                <Setter TargetName="PART_Index" Property="HorizontalAlignment" Value="Right"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#2C59F5"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background" Value="#000080"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="1" BlurRadius="25" Opacity="0.5"/>
+        </Border.Effect>
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Width" Value="150"/>
+                <Setter Property="Height" Value="150"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Background" Value="#2C59F5"/>
+                <Style.Triggers>
+                    <DataTrigger  Binding="{Binding IsChecked, ElementName=Card_}" Value="True">
+                        <Setter Property="Background" Value="White"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <CheckBox x:Name="PART_ToggleButton" HorizontalAlignment="Right" VerticalAlignment="Top"
+                      Style="{StaticResource CardToggleButtonStyle}">
+            </CheckBox>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="20" FontSize="14"
+                        Style="{StaticResource CardTextBlockStyle}">
+            </TextBlock>
+            <TextBlock x:Name="PART_Symbol" Text="{Binding Text, ElementName=Card_}"
+                       FontSize="30"
+                       FontFamily="Pack://application:,,,/Resources/font/#iconfont"
+                       HorizontalAlignment="Left" VerticalAlignment="Center" 
+                       Style="{StaticResource CardTextBlockStyle}">
+            </TextBlock>
+            <TextBlock x:Name="PART_DeviceName" Text="{Binding DeviceName, ElementName=Card_}" 
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom"  >
+                <TextBlock.Style>
+                    <Style  TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=PART_ToggleButton}" Value="True">
+                                <Setter Property="Text" Value="On"/> 
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=PART_ToggleButton}" Value="False">
+                                <Setter Property="Text" Value="Off"/>
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

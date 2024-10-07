@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "dgJCfks+uZs=",
+  "success": true,
+  "projectFilePath": "D:\\WorkSpace\\VS2022\\WPFSamples\\Sample2\\Sample2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\liuch\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.32\\microsoft.windowsdesktop.app.ref.6.0.32.nupkg.sha512",
+    "C:\\Users\\liuch\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.32\\microsoft.netcore.app.ref.6.0.32.nupkg.sha512",
+    "C:\\Users\\liuch\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.32\\microsoft.aspnetcore.app.ref.6.0.32.nupkg.sha512",
+    "C:\\Users\\liuch\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.32\\microsoft.netcore.app.host.win-x64.6.0.32.nupkg.sha512"
+  ],
+  "logs": []
+}
